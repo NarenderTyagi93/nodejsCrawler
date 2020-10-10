@@ -22,7 +22,7 @@ module.exports = new (class Connection {
         useCreateIndex: true,
       },
       (err) => {
-        if (!err) console.log(" Database Connected Successfully");
+        if (!err) console.log("Database Connected Successfully");
         else console.log(err);
       }
     );

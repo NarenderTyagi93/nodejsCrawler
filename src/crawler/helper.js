@@ -24,8 +24,8 @@ module.exports = class Helper {
       if (url.startsWith("//") || url.endsWith("/me") || url.includes("/me/")) {
         return [];
       }
+      url = url.startsWith("/") ? `https://${host}${url}` : url;
 
-      url = url.startsWith("/") ? `http://${host}${url}` : url;
       let has_right_protocol =
         url.startsWith("https://") || url.startsWith("http://");
       if (!url.includes(host) || !has_right_protocol) {
@@ -35,7 +35,7 @@ module.exports = class Helper {
       if (index === -1) uniqueLinks.push({ url, params });
       else
         uniqueLinks[index].params = Array.from(
-          new Set(...uniqueLinks[index].params, ...concat(params))
+          new Set(...uniqueLinks[index].params, ...params)
         );
     });
     return uniqueLinks;
@@ -47,7 +47,10 @@ module.exports = class Helper {
       const { data } = await axios.get("http://medium.com");
       return this.getHyperlinksFromBody(data, host);
     } catch (error) {
-      throw error;
+      if (error && error.response && error.response.status) {
+        console.log(error.response.status, link);
+        return [];
+      } else throw error;
     }
   };
 };

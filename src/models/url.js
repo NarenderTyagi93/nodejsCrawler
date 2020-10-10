@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const dbConnObj = require("../db/connection");
 
-const url_schema = new mongoose.Schema(
+const urlSchema = new mongoose.Schema(
   {
     url: {
       type: String,
@@ -31,4 +31,4 @@ const url_schema = new mongoose.Schema(
   }
 );
 
-module.exports = dbConnObj.model("urls", url_schema);
+module.exports = dbConnObj.model("urls", urlSchema);
