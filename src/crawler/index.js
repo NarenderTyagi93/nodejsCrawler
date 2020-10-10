@@ -16,7 +16,10 @@ module.exports = new (class Crawler {
 
   scrapHyperLinks = async (link) => {
     try {
-      let urls = await scrapHelper.requestUrlandGetHyperlinks(link);
+      let urls = await scrapHelper.requestUrlandGetHyperlinks(
+        link,
+        config.HOST
+      );
       if (urls && urls.length) {
         console.log(JSON.stringify(urls));
       } else {
