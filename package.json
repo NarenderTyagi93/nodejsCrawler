@@ -1,0 +1,26 @@
+{
+  "name": "nodejs-medium-crawler",
+  "version": "1.0.0",
+  "description": "Nodejs System that crawles into medium.com for unique urls and stores that into mongoDb.",
+  "main": "index.js",
+  "scripts": {
+    "start": "export NODE_ENV=development && nodemon ./src/index --exec \"node -r dotenv/config -r \"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Nodejs",
+    "Crawler",
+    "UrlScrapper",
+    "mongoDb",
+    "OOPs"
+  ],
+  "author": "Narender",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "cheerio": "^1.0.0-rc.3",
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.10.8",
+    "query-string": "^6.13.5"
+  }
+}
